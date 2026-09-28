@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=InfoPanel
+comment0.text=\r\n\ InfoPanel\ -\ painel\ com\ um\ t\u00EDtulo\ e\ v\u00E1rias\ linhas\ de\ texto.\r\n\ Usado\ em\ "Como\ jogar",\ "Cr\u00E9ditos"\ e\ no\ resumo\ da\ batalha.\r\n
+comment1.params=title\ lines\ width
+comment1.target=InfoPanel(java.lang.String,\ java.lang.String[],\ int)
+numComments=2

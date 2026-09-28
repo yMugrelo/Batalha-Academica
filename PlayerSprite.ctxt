@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=PlayerSprite
+comment0.text=\r\n\ PlayerSprite\ -\ a\ APAR\u00CANCIA\ do\ estudante\ na\ tela.\r\n\r\n\ A\ l\u00F3gica\ (vida,\ energia...)\ fica\ no\ Student;\ esta\ classe\ s\u00F3\ desenha.\r\n\ As\ anima\u00E7\u00F5es\ de\ ataque,\ dano\ e\ derrota\ entram\ na\ Etapa\ 3.\r\n
+comment1.params=
+comment1.target=PlayerSprite()
+numComments=2

@@ -1,0 +1,4 @@
+#BlueJ class context
+comment0.target=BattleState
+comment0.text=\r\n\ BattleState\ -\ os\ estados\ poss\u00EDveis\ de\ uma\ batalha.\r\n\r\n\ Um\ enum\ \u00E9\ um\ tipo\ com\ uma\ lista\ FIXA\ de\ valores.\r\n\ Uma\ batalha\ est\u00E1\ sempre\ em\ exatamente\ UM\ destes\ estados.\r\n
+numComments=1

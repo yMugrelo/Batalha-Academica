@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=ResultWorld
+comment0.text=\r\n\ ResultWorld\ -\ tela\ de\ VIT\u00D3RIA\ ou\ DERROTA,\ com\ o\ resumo\ da\ batalha.\r\n
+comment1.params=summary
+comment1.target=ResultWorld(BattleSummary)
+comment2.params=
+comment2.target=void\ buildVictory()
+comment3.params=
+comment3.target=void\ buildDefeat()
+comment4.params=key
+comment4.target=void\ onKey(java.lang.String)
+numComments=5

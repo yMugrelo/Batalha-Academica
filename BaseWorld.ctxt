@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=BaseWorld
+comment0.text=\r\n\ BaseWorld\ -\ a\ base\ de\ TODAS\ as\ telas\ do\ jogo.\r\n\r\n\ Define\ o\ tamanho\ fixo\ (800\ x\ 600)\ e\ o\ ciclo\ de\ cada\ frame\:\r\n\ \ \ 1)\ l\u00EA\ a\ tecla\ apertada\ (se\ houver)\ e\ entrega\ para\ onKey()\r\n\ \ \ 2)\ chama\ update()\ para\ anima\u00E7\u00F5es\ e\ contadores\r\n\r\n\ Nada\ aqui\ espera\ o\ jogador\:\ se\ nenhuma\ tecla\ foi\ apertada,\ o\ frame\r\n\ simplesmente\ segue.\ Isso\ mant\u00E9m\ o\ jogo\ compat\u00EDvel\ com\ o\ HTML5.\r\n
+comment1.params=
+comment1.target=BaseWorld()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Chamado\ pelo\ Greenfoot\ a\ cada\ frame\ (enquanto\ o\ Run\ est\u00E1\ ativo).\r\n
+comment3.params=key
+comment3.target=void\ onKey(java.lang.String)
+comment3.text=\r\n\ Cada\ tela\ decide\ o\ que\ fazer\ com\ a\ tecla.\r\n
+comment4.params=
+comment4.target=void\ update()
+comment4.text=\r\n\ Para\ anima\u00E7\u00F5es\ e\ contadores.\ Por\ padr\u00E3o\ n\u00E3o\ faz\ nada.\r\n
+numComments=5

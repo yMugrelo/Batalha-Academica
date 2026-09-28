@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=MenuUI
+comment0.text=\r\n\ MenuUI\ -\ uma\ lista\ de\ op\u00E7\u00F5es\ naveg\u00E1vel\ pelo\ teclado.\r\n\r\n\ Usada\ no\ menu\ principal,\ na\ tela\ de\ resultado\ e\ nas\ a\u00E7\u00F5es\ da\ batalha.\r\n\ Cada\ op\u00E7\u00E3o\ pode\ estar\:\r\n\ \ \ -\ selecionada\ \ \ (fundo\ destacado\ e\ marcador\ ">")\r\n\ \ \ -\ dispon\u00EDvel\ \ \ \ (texto\ claro)\r\n\ \ \ -\ indispon\u00EDvel\ \ (texto\ apagado;\ pode\ ser\ selecionada,\ mas\ n\u00E3o\ confirmada)\r\n\r\n\ O\ MenuUI\ s\u00F3\ DESENHA\ e\ guarda\ qual\ op\u00E7\u00E3o\ est\u00E1\ selecionada.\r\n\ Quem\ decide\ o\ que\ cada\ op\u00E7\u00E3o\ faz\ \u00E9\ o\ World\ que\ o\ usa.\r\n
+comment1.params=labels\ width\ rowHeight
+comment1.target=MenuUI(java.lang.String[],\ int,\ int)
+comment10.params=
+comment10.target=void\ redraw()
+comment2.params=labels\ details\ width\ rowHeight
+comment2.target=MenuUI(java.lang.String[],\ java.lang.String[],\ int,\ int)
+comment3.params=
+comment3.target=void\ moveUp()
+comment4.params=
+comment4.target=void\ moveDown()
+comment5.params=index
+comment5.target=void\ setSelected(int)
+comment6.params=
+comment6.target=int\ getSelected()
+comment7.params=
+comment7.target=boolean\ isSelectedEnabled()
+comment8.params=index\ value
+comment8.target=void\ setEnabled(int,\ boolean)
+comment9.params=value
+comment9.target=void\ setActive(boolean)
+numComments=11

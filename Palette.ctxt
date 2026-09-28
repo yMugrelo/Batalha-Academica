@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Palette
+comment0.text=\r\n\ Palette\ -\ todas\ as\ cores\ do\ jogo\ em\ um\ s\u00F3\ lugar.\r\n\r\n\ Usar\ sempre\ estas\ constantes\ (e\ nunca\ "new\ Color(...)"\ solto\ pelo\ c\u00F3digo)\r\n\ mant\u00E9m\ o\ visual\ consistente\ em\ todas\ as\ telas.\r\n
+comment1.params=type
+comment1.target=greenfoot.Color\ subjectColor(SubjectType)
+comment1.text=\r\n\ Cor\ principal\ de\ cada\ mat\u00E9ria.\r\n
+comment2.params=type
+comment2.target=greenfoot.Color\ roomColor(SubjectType)
+comment2.text=\r\n\ Cor\ da\ parede\ da\ arena\ de\ cada\ mat\u00E9ria\ (mais\ escura\ e\ discreta).\r\n
+comment3.params=c\ amount
+comment3.target=greenfoot.Color\ darker(greenfoot.Color,\ int)
+comment3.text=\r\n\ Vers\u00E3o\ mais\ escura\ de\ uma\ cor\ (para\ sombras\ e\ contornos).\r\n
+numComments=4

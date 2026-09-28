@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=MyWorld
+comment0.text=\r\n\ MyWorld\ -\ TELA\ INICIAL\ (menu\ principal).\r\n\r\n\ O\ nome\ continua\ "MyWorld"\ porque\ \u00E9\ o\ mundo\ que\ o\ Greenfoot\ abre\r\n\ primeiro\ (configurado\ no\ projeto).\ Ele\ s\u00F3\ monta\ o\ menu\ e\ repassa\r\n\ cada\ escolha\ para\ o\ GameManager.\r\n
+comment1.params=
+comment1.target=MyWorld()
+comment2.params=key
+comment2.target=void\ onKey(java.lang.String)
+comment3.params=option
+comment3.target=void\ choose(int)
+comment4.params=
+comment4.target=void\ exit()
+comment4.text=\r\n\ No\ navegador\ um\ jogo\ n\u00E3o\ pode\ fechar\ a\ aba,\ ent\u00E3o\ "SAIR"\r\n\ mostra\ uma\ despedida\ e\ pausa\ o\ jogo\ (Greenfoot.stop()).\r\n
+numComments=5

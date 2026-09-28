@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=UiArt
+comment0.text=\r\n\ UiArt\ -\ pe\u00E7as\ visuais\ da\ interface\ (pain\u00E9is,\ sombras).\r\n\r\n\ Os\ cantos\ s\u00E3o\ "cortados"\ em\ degraus\ para\ combinar\ com\ o\ estilo\ pixel\ art.\r\n
+comment1.params=width\ height
+comment1.target=greenfoot.GreenfootImage\ panel(int,\ int)
+comment1.text=\r\n\ Painel\ semitransparente\ com\ borda\ clara.\r\n
+comment2.params=width\ height\ edge
+comment2.target=greenfoot.GreenfootImage\ panel(int,\ int,\ greenfoot.Color)
+comment2.text=\r\n\ Painel\ semitransparente\ com\ a\ cor\ de\ borda\ escolhida.\r\n
+comment3.params=image\ alpha
+comment3.target=greenfoot.GreenfootImage\ dimmed(greenfoot.GreenfootImage,\ int)
+comment3.text=\r\n\ Escurece\ uma\ imagem\ inteira\ (ex.\:\ fundo\ das\ telas\ de\ resultado,\r\n\ para\ o\ texto\ ficar\ em\ primeiro\ plano).\r\n
+comment4.params=width
+comment4.target=greenfoot.GreenfootImage\ shadow(int)
+comment4.text=\r\n\ Sombra\ oval\ para\ colocar\ embaixo\ dos\ personagens.\r\n
+comment5.params=sprite\ gap
+comment5.target=greenfoot.GreenfootImage\ withShadow(greenfoot.GreenfootImage,\ int)
+comment5.text=\r\n\ Junta\ uma\ imagem\ de\ personagem\ com\ uma\ sombra\ embaixo\ dela.\r\n\ gap\ \=\ espa\u00E7o\ entre\ os\ p\u00E9s\ e\ a\ sombra\ (personagens\ que\ flutuam).\r\n
+numComments=6

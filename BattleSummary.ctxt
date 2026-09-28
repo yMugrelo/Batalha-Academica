@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=BattleSummary
+comment0.text=\r\n\ BattleSummary\ -\ o\ resultado\ de\ uma\ batalha\ que\ acabou.\r\n\r\n\ \u00C9\ criado\ pelo\ BattleWorld\ quando\ a\ batalha\ termina\ e\ entregue\r\n\ para\ a\ tela\ de\ resultado.\ S\u00F3\ guarda\ dados\ (n\u00E3o\ muda\ depois\ de\ criado).\r\n
+comment1.params=subjectType\ turnManager
+comment1.target=BattleSummary(SubjectType,\ TurnManager)
+comment1.text=\r\n\ Copia\ os\ n\u00FAmeros\ do\ TurnManager\ no\ momento\ em\ que\ a\ batalha\ acaba.\r\n
+comment2.params=
+comment2.target=SubjectType\ getSubjectType()
+comment3.params=
+comment3.target=java.lang.String\ getSubjectName()
+comment4.params=
+comment4.target=boolean\ isVictory()
+comment5.params=
+comment5.target=int\ getTurns()
+comment6.params=
+comment6.target=int\ getDamageDealt()
+comment7.params=
+comment7.target=int\ getDamageTaken()
+comment8.params=
+comment8.target=int\ getCriticalHits()
+comment9.params=
+comment9.target=int\ getKnowledgeGained()
+numComments=10

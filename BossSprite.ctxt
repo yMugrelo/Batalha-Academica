@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=BossSprite
+comment0.text=\r\n\ BossSprite\ -\ a\ APAR\u00CANCIA\ de\ uma\ mat\u00E9ria\ na\ tela.\r\n\r\n\ A\ l\u00F3gica\ (vida,\ ataques...)\ fica\ no\ Subject;\ esta\ classe\ s\u00F3\ desenha.\r\n\ As\ mat\u00E9rias\ "flutuam"\:\ a\ sombra\ fica\ um\ pouco\ abaixo\ do\ livro.\r\n\ As\ anima\u00E7\u00F5es\ de\ ataque,\ dano\ e\ derrota\ entram\ na\ Etapa\ 3.\r\n
+comment1.params=type
+comment1.target=BossSprite(SubjectType)
+numComments=2

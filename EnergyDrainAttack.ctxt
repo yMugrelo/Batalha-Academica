@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=EnergyDrainAttack
+comment0.text=\r\n\ EnergyDrainAttack\ -\ um\ ataque\ que,\ al\u00E9m\ do\ dano,\ drena\ a\ energia\ do\ estudante.\r\n\r\n\ Herda\ tudo\ de\ Attack\ e\ s\u00F3\ muda\ o\ que\ acontece\ em\ use().\r\n
+comment1.params=name\ damage\ energyCost\ description\ energyDrain
+comment1.target=EnergyDrainAttack(java.lang.String,\ int,\ int,\ java.lang.String,\ int)
+comment2.params=attackPower\ target
+comment2.target=int\ use(int,\ Student)
+comment2.text=\r\n\ Primeiro\ drena\ a\ energia,\ depois\ causa\ o\ dano\ normal\r\n\ reaproveitando\ o\ use()\ da\ classe\ m\u00E3e\ (super.use).\r\n
+numComments=3

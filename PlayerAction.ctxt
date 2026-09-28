@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=PlayerAction
+comment0.text=\r\n\ PlayerAction\ -\ as\ quatro\ a\u00E7\u00F5es\ que\ o\ jogador\ pode\ escolher\ no\ seu\ turno.\r\n\r\n\ Este\ enum\ n\u00E3o\ \u00E9\ s\u00F3\ uma\ lista\ de\ nomes\:\ cada\ a\u00E7\u00E3o\ tamb\u00E9m\ guarda\r\n\ seus\ pr\u00F3prios\ dados\ (tecla,\ texto\ e\ custo\ de\ energia).\r\n\ Assim,\ tudo\ o\ que\ "descreve"\ uma\ a\u00E7\u00E3o\ fica\ em\ um\ lugar\ s\u00F3.\r\n
+comment1.params=key\ label\ energyCost
+comment1.target=PlayerAction(java.lang.String,\ java.lang.String,\ int)
+comment1.text=\r\n\ Construtor\ do\ enum\:\ chamado\ automaticamente\ uma\ vez\ para\ cada\r\n\ valor\ da\ lista\ acima\ (ESTUDAR,\ RESOLVER_QUESTAO...).\r\n
+comment2.params=
+comment2.target=java.lang.String\ getKey()
+comment3.params=
+comment3.target=java.lang.String\ getLabel()
+comment4.params=
+comment4.target=int\ getEnergyCost()
+comment5.params=key
+comment5.target=PlayerAction\ fromKey(java.lang.String)
+comment5.text=\r\n\ Procura\ a\ a\u00E7\u00E3o\ ligada\ a\ uma\ tecla.\r\n\ Devolve\ null\ se\ a\ tecla\ n\u00E3o\ corresponder\ a\ nenhuma\ a\u00E7\u00E3o.\r\n
+numComments=6

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Attack
+comment0.text=\r\n\ Attack\ -\ um\ ataque\ que\ uma\ disciplina\ pode\ usar.\r\n\r\n\ \u00C9\ uma\ classe\ Java\ comum\ (n\u00E3o\ \u00E9\ Actor)\:\ ela\ n\u00E3o\ aparece\ na\ tela,\r\n\ s\u00F3\ guarda\ os\ dados\ do\ ataque\ e\ sabe\ como\ aplic\u00E1-lo\ no\ estudante.\r\n\r\n\ Os\ atributos\ s\u00E3o\ "final"\:\ depois\ de\ criado,\ um\ ataque\ nunca\ muda.\r\n
+comment1.params=name\ damage\ energyCost\ description
+comment1.target=Attack(java.lang.String,\ int,\ int,\ java.lang.String)
+comment2.params=attackPower\ target
+comment2.target=int\ use(int,\ Student)
+comment2.text=\r\n\ Aplica\ o\ ataque\ no\ estudante.\r\n\ attackPower\ \u00E9\ a\ for\u00E7a\ base\ da\ disciplina\ que\ est\u00E1\ atacando.\r\n\ Devolve\ o\ dano\ que\ o\ estudante\ realmente\ recebeu.\r\n\r\n\ Subclasses\ podem\ sobrescrever\ este\ m\u00E9todo\ para\ criar\ efeitos\ extras.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=int\ getDamage()
+comment5.params=
+comment5.target=int\ getEnergyCost()
+comment6.params=
+comment6.target=java.lang.String\ getDescription()
+numComments=7

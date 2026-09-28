@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Decoration
+comment0.text=\r\n\ Decoration\ -\ um\ ator\ que\ s\u00F3\ mostra\ uma\ imagem\ (t\u00EDtulos,\ textos\ fixos).\r\n
+comment1.params=image
+comment1.target=Decoration(greenfoot.GreenfootImage)
+numComments=2

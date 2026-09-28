@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=SubjectType
+comment0.text=\r\n\ SubjectType\ -\ identifica\ cada\ uma\ das\ quatro\ mat\u00E9rias\ do\ jogo.\r\n\r\n\ Serve\ para\ as\ telas\ (sele\u00E7\u00E3o,\ batalha,\ resultado)\ saberem\ QUAL\ mat\u00E9ria\r\n\ foi\ escolhida\ sem\ precisar\ guardar\ o\ objeto\ Subject\ inteiro,\ e\ para\r\n\ criar\ uma\ batalha\ nova\ (create)\ sempre\ que\ necess\u00E1rio.\r\n
+comment1.params=
+comment1.target=Subject\ create()
+comment1.text=\r\n\ Cria\ um\ objeto\ novo\ da\ mat\u00E9ria,\ com\ vida\ e\ energia\ cheias.\r\n
+numComments=2

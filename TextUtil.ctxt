@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=TextUtil
+comment0.text=\r\n\ TextUtil\ -\ fun\u00E7\u00F5es\ de\ ajuda\ para\ criar\ imagens\ de\ texto.\r\n\r\n\ Usa\ sempre\ o\ construtor\ GreenfootImage(texto,\ tamanho,\ cor,\ fundo),\r\n\ que\ funciona\ no\ desktop\ e\ no\ navegador\ (n\u00E3o\ depende\ de\ fontes\ instaladas).\r\n
+comment1.params=text\ size\ color
+comment1.target=greenfoot.GreenfootImage\ text(java.lang.String,\ int,\ greenfoot.Color)
+comment1.text=\r\n\ Texto\ simples\ com\ fundo\ transparente.\r\n
+comment2.params=text\ size\ color
+comment2.target=greenfoot.GreenfootImage\ shadowText(java.lang.String,\ int,\ greenfoot.Color)
+comment2.text=\r\n\ Texto\ com\ uma\ sombra\ escura\ deslocada,\ para\ ficar\ leg\u00EDvel\ sobre\ qualquer\ fundo.\r\n
+comment3.params=text\ maxChars
+comment3.target=java.lang.String\ wrap(java.lang.String,\ int)
+comment3.text=\r\n\ Quebra\ um\ texto\ em\ linhas\ de\ no\ m\u00E1ximo\ maxChars\ caracteres,\r\n\ sem\ cortar\ palavras.\ Devolve\ o\ texto\ com\ "\\n"\ entre\ as\ linhas.\r\n
+comment4.params=target\ img\ y
+comment4.target=void\ drawCentered(greenfoot.GreenfootImage,\ greenfoot.GreenfootImage,\ int)
+comment4.text=\r\n\ Desenha\ uma\ imagem\ centralizada\ horizontalmente\ dentro\ de\ outra.\r\n
+numComments=5
