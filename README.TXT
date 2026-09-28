@@ -41,3 +41,8 @@ A arte atual é provisória (pixel art desenhada em código). Para usar
 PNGs, coloque-os em images/ e registre o caminho em ImageLibrary
 (lista AVAILABLE). Sons (.wav) vão em sounds/ e são registrados em
 SoundManager. O jogo funciona normalmente sem nenhum som.
+
+MAIS DETALHES
+A documentação completa (arquitetura, todas as classes, regras e
+como adicionar assets) está no arquivo README.md e no repositório:
+https://github.com/yMugrelo/Batalha-Academica
