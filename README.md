@@ -394,6 +394,6 @@ antes de usar o teclado.
 
 ## Autor
 
-**(seu nome aqui)** — projeto da disciplina de *(nome da disciplina)*, *(nome da faculdade)*.
+**(Murilo Rosa de Paula e Felipe Henrique Santos Berberth)** — projeto da disciplina de *(Prog II)*, *(UENP)*.
 
 Feito com [Greenfoot](https://www.greenfoot.org/).
