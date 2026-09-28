@@ -1,0 +1,13 @@
+# Greenfoot / BlueJ: gerados ao compilar (o Greenfoot recria sozinho)
+*.class
+*.ctxt
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini

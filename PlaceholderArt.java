@@ -74,6 +74,66 @@ public class PlaceholderArt
         });
     }
 
+    /**
+     * Pose de ataque: o estudante estica o braço com um lápis gigante.
+     * A imagem ganha margem dos DOIS lados para o centro não "pular"
+     * quando o sprite troca de pose.
+     */
+    public static GreenfootImage playerAttack(int block)
+    {
+        GreenfootImage body = player(block);
+        int pad = 5 * block;
+        GreenfootImage img = new GreenfootImage(body.getWidth() + pad * 2, body.getHeight());
+        img.drawImage(body, pad, 0);
+
+        // Lápis saindo da mão direita (linha 16 da grade)
+        int handX = pad + 14 * block;
+        int handY = 16 * block;
+        img.setColor(Palette.INK);                       // contorno
+        img.fillRect(handX, handY - 2, 5 * block + 2, block + 4);
+        img.setColor(Palette.ACCENT);                    // corpo amarelo
+        img.fillRect(handX, handY, 4 * block, block);
+        img.setColor(Palette.PAGE);                      // madeira apontada
+        img.fillRect(handX + 4 * block, handY, block, block);
+        return img;
+    }
+
+    // ===================== Efeitos =====================
+
+    // Estrela de impacto (cada caractere vira um bloco)
+    private static final String[] BURST = {
+        "....Y....",
+        "....Y....",
+        ".Y..Y..Y.",
+        "..YYOYY..",
+        "YYYOWOYYY",
+        "..YYOYY..",
+        ".Y..Y..Y.",
+        "....Y....",
+        "....Y...."
+    };
+
+    /**
+     * Estrela de impacto com a cor de fora e a cor do miolo escolhidas.
+     */
+    public static GreenfootImage burst(int block, Color outer, Color core)
+    {
+        return drawGrid(BURST, block, "YOW", new Color[] { outer, core, Palette.WHITE });
+    }
+
+    /**
+     * Um pedacinho de confete.
+     */
+    public static GreenfootImage confetti(Color color)
+    {
+        GreenfootImage img = new GreenfootImage(8, 8);
+        img.setColor(color);
+        img.fillRect(0, 0, 8, 8);
+        img.setColor(Palette.darker(color, 50));
+        img.fillRect(0, 6, 8, 2);
+        return img;
+    }
+
     // ===================== Matérias (livros-monstro) =====================
 
     // Corpo comum a todas as matérias: um livro vivo com olhos bravos.
@@ -176,7 +236,7 @@ public class PlaceholderArt
      */
     public static GreenfootImage classroom(int width, int height)
     {
-        GreenfootImage img = room(width, height, new Color(58, 62, 88), new Color(92, 70, 56));
+        GreenfootImage img = room(width, height, height * 2 / 3, new Color(58, 62, 88), new Color(92, 70, 56));
         board(img, 100, 60, width - 200, 200);
         return img;
     }
@@ -187,11 +247,13 @@ public class PlaceholderArt
      */
     public static GreenfootImage arena(SubjectType type, int width, int height)
     {
-        GreenfootImage img = room(width, height, Palette.roomColor(type), new Color(84, 66, 54));
+        // O chão começa mais alto que no menu: os personagens ficam de pé
+        // sobre ele, acima da caixa de mensagens.
+        GreenfootImage img = room(width, height, 340, Palette.roomColor(type), new Color(84, 66, 54));
         int bx = 230;
-        int by = 100;
+        int by = 128;   // abaixo do HUD
         int bw = width - 460;
-        int bh = 150;
+        int bh = 128;
         board(img, bx, by, bw, bh);
         boardContent(img, type, bx, by, bw, bh);
         return img;
@@ -200,10 +262,9 @@ public class PlaceholderArt
     /**
      * Parede com painéis, rodapé e piso quadriculado.
      */
-    private static GreenfootImage room(int width, int height, Color wall, Color floor)
+    private static GreenfootImage room(int width, int height, int floorY, Color wall, Color floor)
     {
         GreenfootImage img = new GreenfootImage(width, height);
-        int floorY = height * 2 / 3;   // o chão ocupa o terço de baixo
 
         // Parede
         img.setColor(wall);
@@ -279,28 +340,28 @@ public class PlaceholderArt
                     int cy = y + h / 2 + (int) (Math.sin(i / 14.0) * 30);
                     img.fillRect(x + 34 + i, cy, 4, 4);
                 }
-                img.drawImage(TextUtil.text("f'(x) = lim", 22, Palette.CHALK), x + w / 2 + 20, y + 30);
-                img.drawImage(TextUtil.text("∫ f(x) dx", 22, Palette.CHALK), x + w / 2 + 20, y + 80);
+                img.drawImage(TextUtil.text("f'(x) = lim", 22, Palette.CHALK), x + w / 2 + 20, y + 22);
+                img.drawImage(TextUtil.text("∫ f(x) dx", 22, Palette.CHALK), x + w / 2 + 20, y + 72);
                 break;
 
             case LINEAR_ALGEBRA:
-                img.drawImage(TextUtil.text("[ 2  1 ]", 24, Palette.CHALK), x + 30, y + 35);
-                img.drawImage(TextUtil.text("[ 0  3 ]", 24, Palette.CHALK), x + 30, y + 70);
-                img.drawImage(TextUtil.text("det(A) = 6", 22, Palette.CHALK), x + w / 2 + 10, y + 30);
-                img.drawImage(TextUtil.text("Av = λv", 22, Palette.CHALK), x + w / 2 + 10, y + 80);
+                img.drawImage(TextUtil.text("[ 2  1 ]", 24, Palette.CHALK), x + 30, y + 28);
+                img.drawImage(TextUtil.text("[ 0  3 ]", 24, Palette.CHALK), x + 30, y + 63);
+                img.drawImage(TextUtil.text("det(A) = 6", 22, Palette.CHALK), x + w / 2 + 10, y + 24);
+                img.drawImage(TextUtil.text("Av = λv", 22, Palette.CHALK), x + w / 2 + 10, y + 72);
                 break;
 
             case JAVA_PROGRAMMING:
-                img.drawImage(TextUtil.text("public class Aluno {", 20, Palette.CHALK), x + 25, y + 25);
-                img.drawImage(TextUtil.text("    int nota = 10;", 20, Palette.CHALK), x + 25, y + 60);
-                img.drawImage(TextUtil.text("}", 20, Palette.CHALK), x + 25, y + 95);
+                img.drawImage(TextUtil.text("public class Aluno {", 20, Palette.CHALK), x + 25, y + 18);
+                img.drawImage(TextUtil.text("    int nota = 10;", 20, Palette.CHALK), x + 25, y + 50);
+                img.drawImage(TextUtil.text("}", 20, Palette.CHALK), x + 25, y + 82);
                 break;
 
             default:
                 // Árvore binária: nós e ligações
                 int cx = x + w / 2;
-                int[][] nodes = { {cx, y + 30}, {cx - 90, y + 75}, {cx + 90, y + 75},
-                                  {cx - 130, y + 120}, {cx - 50, y + 120}, {cx + 50, y + 120} };
+                int[][] nodes = { {cx, y + 24}, {cx - 90, y + 62}, {cx + 90, y + 62},
+                                  {cx - 130, y + 100}, {cx - 50, y + 100}, {cx + 50, y + 100} };
                 int[][] edges = { {0, 1}, {0, 2}, {1, 3}, {1, 4}, {2, 5} };
                 for (int[] e : edges)
                 {

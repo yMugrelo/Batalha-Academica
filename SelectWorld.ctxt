@@ -1,11 +1,15 @@
 #BlueJ class context
 comment0.target=SelectWorld
-comment0.text=\r\n\ SelectWorld\ -\ tela\ "ESCOLHA\ SUA\ MAT\u00C9RIA".\r\n\r\n\ SETAS\ escolhem,\ ENTER\ confirma,\ 1-4\ escolhem\ direto,\ ESC\ volta\ ao\ menu.\r\n
+comment0.text=\r\n\ SelectWorld\ -\ tela\ "ESCOLHA\ SUA\ MAT\u00C9RIA".\r\n\r\n\ Teclado\:\ SETAS\ escolhem,\ ENTER\ confirma,\ 1-4\ escolhem\ direto,\ ESC\ volta.\r\n\ Mouse\:\ passar\ por\ cima\ escolhe,\ clicar\ come\u00E7a\ a\ batalha.\r\n\r\n\ O\ \u00EDcone\ da\ mat\u00E9ria\ selecionada\ flutua;\ os\ outros\ ficam\ parados.\r\n
 comment1.params=
 comment1.target=SelectWorld()
 comment2.params=key
 comment2.target=void\ onKey(java.lang.String)
-comment3.params=index
-comment3.target=void\ select(int)
-comment3.text=\r\n\ Destaca\ o\ card\ escolhido\ (e\ o\ "levanta"\ um\ pouco).\r\n
-numComments=4
+comment3.params=
+comment3.target=void\ handleMouse()
+comment4.params=index
+comment4.target=void\ startBattle(int)
+comment5.params=index
+comment5.target=void\ select(int)
+comment5.text=\r\n\ Destaca\ o\ card\ escolhido\:\ borda\ dourada,\ sobe\ um\ pouco\ e\ o\ \u00EDcone\ flutua.\r\n
+numComments=6

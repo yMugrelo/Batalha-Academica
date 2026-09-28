@@ -82,7 +82,6 @@ public class ImageLibrary
 
     /**
      * Estudante. pose: "idle", "attack", "hurt" ou "defeat".
-     * (Nesta etapa a arte provisória só tem a pose parada.)
      */
     public static GreenfootImage player(String pose)
     {
@@ -91,7 +90,34 @@ public class ImageLibrary
         {
             return new GreenfootImage(path);
         }
+        // Arte provisória: só existe a pose de ataque diferente;
+        // dano e derrota são feitos com movimento (piscar, cair).
+        if (pose.equals("attack"))
+        {
+            return PlaceholderArt.playerAttack(PLAYER_BLOCK);
+        }
         return PlaceholderArt.player(PLAYER_BLOCK);
+    }
+
+    /**
+     * Efeito visual: "hit", "critical" ou "victory".
+     */
+    public static GreenfootImage effect(String name)
+    {
+        String path = "effects/" + name + ".png";
+        if (isAvailable(path))
+        {
+            return new GreenfootImage(path);
+        }
+        if (name.equals("critical"))
+        {
+            return PlaceholderArt.burst(9, Palette.CRITICAL, Palette.ACCENT);
+        }
+        if (name.equals("victory"))
+        {
+            return PlaceholderArt.burst(14, Palette.ACCENT, Palette.WHITE);
+        }
+        return PlaceholderArt.burst(6, Palette.WHITE, Palette.ACCENT);
     }
 
     /**

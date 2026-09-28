@@ -77,7 +77,16 @@ public class UiArt
      */
     public static GreenfootImage withShadow(GreenfootImage sprite, int gap)
     {
-        GreenfootImage shadow = shadow(sprite.getWidth() * 3 / 4);
+        return withShadow(sprite, gap, sprite.getWidth() * 3 / 4);
+    }
+
+    /**
+     * Igual ao anterior, escolhendo a largura da sombra (para que poses
+     * de larguras diferentes tenham a mesma sombra).
+     */
+    public static GreenfootImage withShadow(GreenfootImage sprite, int gap, int shadowWidth)
+    {
+        GreenfootImage shadow = shadow(shadowWidth);
         int height = sprite.getHeight() + gap + shadow.getHeight() / 2;
         GreenfootImage img = new GreenfootImage(sprite.getWidth(), height);
 

@@ -17,9 +17,12 @@ public class MyWorld extends BaseWorld
     public MyWorld()
     {
         super();
-        setBackground(ImageLibrary.classroom(WIDTH, HEIGHT));
+        setBackground(BackgroundManager.menu());
+        SoundManager.playMusic("menu");
 
-        addObject(new Decoration(TextUtil.shadowText("BATALHA ACADÊMICA", 52, Palette.HIGHLIGHT)), 400, 135);
+        // Título flutuando devagar
+        addObject(new FloatingDecoration(TextUtil.shadowText("BATALHA ACADÊMICA", 52, Palette.HIGHLIGHT),
+                                         4, 0.05), 400, 135);
         addObject(new Decoration(TextUtil.shadowText("Sobreviva ao semestre.", 26, Palette.TEXT)), 400, 205);
 
         menu = new MenuUI(OPTIONS, 300, 44);
@@ -29,8 +32,8 @@ public class MyWorld extends BaseWorld
         addObject(new PlayerSprite(), 130, 455);
         addObject(new BossSprite(SubjectType.CALCULUS), 670, 440);
 
-        addObject(new Decoration(TextUtil.shadowText("SETAS: navegar    ENTER/ESPAÇO: confirmar", 18, Palette.TEXT)),
-                  400, 575);
+        addObject(new Decoration(TextUtil.shadowText(
+            "SETAS ou MOUSE: navegar    ENTER, ESPAÇO ou CLIQUE: confirmar", 18, Palette.TEXT)), 400, 575);
         exiting = false;
     }
 
@@ -39,7 +42,7 @@ public class MyWorld extends BaseWorld
         // Depois de "SAIR", qualquer tecla volta ao menu (útil no desktop após apertar Run de novo)
         if (exiting)
         {
-            GameManager.goToMenu();
+            GameManager.goToMenu(this);
             return;
         }
 
@@ -57,18 +60,36 @@ public class MyWorld extends BaseWorld
         }
     }
 
+    protected void handleMouse()
+    {
+        if (exiting)
+        {
+            if (Greenfoot.mouseClicked(null))   // clique em qualquer lugar
+            {
+                GameManager.goToMenu(this);
+            }
+            return;
+        }
+
+        int clicked = menu.getClickedIndex();
+        if (clicked >= 0)
+        {
+            choose(clicked);
+        }
+    }
+
     private void choose(int option)
     {
         switch (option)
         {
             case 0:
-                GameManager.goToSelection();
+                GameManager.goToSelection(this);
                 break;
             case 1:
-                GameManager.goToHowToPlay();
+                GameManager.goToHowToPlay(this);
                 break;
             case 2:
-                GameManager.goToCredits();
+                GameManager.goToCredits(this);
                 break;
             default:
                 exit();
@@ -86,7 +107,7 @@ public class MyWorld extends BaseWorld
         removeObject(menu);
         addObject(new InfoPanel("ATÉ LOGO!", new String[] {
             "Obrigado por jogar.",
-            "Aperte Run e uma tecla para voltar."
+            "Aperte Run e uma tecla (ou clique) para voltar."
         }, 420), 400, 390);
         Greenfoot.stop();
     }

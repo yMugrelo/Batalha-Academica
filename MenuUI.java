@@ -80,6 +80,71 @@ public class MenuUI extends Actor
         return enabled[selected];
     }
 
+    // ===================== Mouse =====================
+
+    /**
+     * Passar o mouse por cima de uma opção também a seleciona.
+     */
+    public void act()
+    {
+        if (active && Greenfoot.mouseMoved(this))
+        {
+            int index = indexUnderMouse();
+            if (index >= 0 && index != selected)
+            {
+                selected = index;
+                redraw();
+            }
+        }
+    }
+
+    /**
+     * Se a opção foi clicada neste frame, devolve o índice dela; senão, -1.
+     * (Quem usa o menu chama isto no handleMouse() da tela.)
+     */
+    public int getClickedIndex()
+    {
+        if (!active || !Greenfoot.mouseClicked(this))
+        {
+            return -1;
+        }
+        int index = indexUnderMouse();
+        if (index >= 0)
+        {
+            selected = index;
+            redraw();
+        }
+        return index;
+    }
+
+    /**
+     * Qual linha está embaixo do mouse (-1 se nenhuma).
+     */
+    private int indexUnderMouse()
+    {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse == null)
+        {
+            return -1;
+        }
+        return indexAt(mouse.getX(), mouse.getY());
+    }
+
+    /**
+     * Qual linha fica no ponto (x, y) do mundo (-1 se nenhuma).
+     */
+    public int indexAt(int x, int y)
+    {
+        int left = getX() - getImage().getWidth() / 2;
+        int top = getY() - getImage().getHeight() / 2 + PADDING;
+        if (x < left || x >= left + width || y < top)
+        {
+            return -1;
+        }
+        int row = (y - top) / rowHeight;
+        return row < labels.length ? row : -1;
+    }
+
     // ===================== Estado das opções =====================
 
     public void setEnabled(int index, boolean value)

@@ -20,6 +20,13 @@ public class Palette
 
     // Atributos
     public static final Color HP          = new Color(222, 72, 72);
+    public static final Color HP_HIGH     = new Color(84, 200, 112);    // vida acima de 50%
+    public static final Color HP_MID      = new Color(240, 192, 64);    // vida entre 25% e 50%
+    public static final Color HP_LOW      = new Color(226, 64, 64);     // vida abaixo de 25%
+    public static final Color BAR_BACK    = new Color(44, 38, 64);      // fundo vazio das barras
+    public static final Color BAR_GHOST   = new Color(250, 236, 200);   // "rastro" do dano recente
+    public static final Color CELL        = new Color(48, 42, 76, 200); // células do menu de ações
+    public static final Color CELL_EDGE   = new Color(82, 74, 112);
     public static final Color ENERGY      = new Color(72, 160, 232);
     public static final Color KNOWLEDGE   = new Color(156, 112, 232);
     public static final Color CRITICAL    = new Color(255, 150, 40);
@@ -76,6 +83,16 @@ public class Palette
             default:
                 return new Color(84, 52, 58);
         }
+    }
+
+    /**
+     * Versão mais clara de uma cor (para brilhos).
+     */
+    public static Color lighter(Color c, int amount)
+    {
+        return new Color(Math.min(255, c.getRed() + amount),
+                         Math.min(255, c.getGreen() + amount),
+                         Math.min(255, c.getBlue() + amount));
     }
 
     /**

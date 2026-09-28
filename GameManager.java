@@ -1,47 +1,45 @@
-import greenfoot.*;
-
 /**
  * GameManager - controla o FLUXO entre as telas do jogo.
  *
  *   MENU -> SELEÇÃO -> BATALHA -> RESULTADO -> MENU
  *
  * Toda troca de tela passa por aqui. Assim nenhuma tela precisa
- * saber como a outra é construída, e se um dia quisermos uma
- * transição (ex.: escurecer a tela), mudamos só esta classe.
+ * saber como a outra é construída. Cada método recebe a tela atual
+ * ("from") para fazer a transição (escurecer e clarear).
  *
- * Cada tela é um World diferente, trocado com Greenfoot.setWorld().
- * Os dados passam pelos construtores (ex.: a matéria escolhida), então
- * não existe estado "global" que possa sobrar depois de um Reset.
+ * Cada tela é um World diferente. Os dados passam pelos construtores
+ * (ex.: a matéria escolhida), então não existe estado "global" que
+ * possa sobrar depois de um Reset.
  */
 public class GameManager
 {
-    public static void goToMenu()
+    public static void goToMenu(BaseWorld from)
     {
-        Greenfoot.setWorld(new MyWorld());
+        from.goTo(new MyWorld());
     }
 
-    public static void goToHowToPlay()
+    public static void goToHowToPlay(BaseWorld from)
     {
-        Greenfoot.setWorld(InfoWorld.howToPlay());
+        from.goTo(new HowToPlayWorld());
     }
 
-    public static void goToCredits()
+    public static void goToCredits(BaseWorld from)
     {
-        Greenfoot.setWorld(InfoWorld.credits());
+        from.goTo(new CreditsWorld());
     }
 
-    public static void goToSelection()
+    public static void goToSelection(BaseWorld from)
     {
-        Greenfoot.setWorld(new SelectWorld());
+        from.goTo(new SelectWorld());
     }
 
-    public static void startBattle(SubjectType type)
+    public static void startBattle(BaseWorld from, SubjectType type)
     {
-        Greenfoot.setWorld(new BattleWorld(type));
+        from.goTo(new BattleWorld(type));
     }
 
-    public static void showResult(BattleSummary summary)
+    public static void showResult(BaseWorld from, BattleSummary summary)
     {
-        Greenfoot.setWorld(new ResultWorld(summary));
+        from.goTo(new ResultWorld(summary));
     }
 }

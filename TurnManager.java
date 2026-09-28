@@ -25,6 +25,10 @@ public class TurnManager
     private int criticalHits;      // quantos acertos críticos
     private int startKnowledge;    // conhecimento no início (para calcular o ganho)
 
+    // Registro da última ação, para a interface tocar animações (só leitura)
+    private BattleEvent lastEvent;
+    private int eventCount;        // aumenta 1 a cada ação: a interface percebe que há algo novo
+
     /**
      * Cria uma batalha entre o estudante e uma disciplina.
      * A batalha sempre começa no turno do jogador.
@@ -89,8 +93,13 @@ public class TurnManager
             return false;
         }
 
-        // O Student sabe COMO fazer a ação; o TurnManager só pede
+        // Fotografa os valores antes da ação (para o registro do evento)
+        int healthBefore = student.getHealth();
+        int energyBefore = student.getEnergy();
+        int knowledgeBefore = student.getKnowledge();
         int enemyHealthBefore = enemy.getHealth();
+
+        // O Student sabe COMO fazer a ação; o TurnManager só pede
         int damage = student.performAction(action, enemy);
         message = describeAction(action, damage);
 
@@ -103,6 +112,12 @@ public class TurnManager
             message = "CRÍTICO! " + message;
         }
 
+        recordEvent(BattleEvent.player(action, student.wasLastActionCritical(), damage,
+                                       student.getHealth() - healthBefore,
+                                       student.getEnergy() - energyBefore,
+                                       student.getKnowledge() - knowledgeBefore,
+                                       enemy.getHealth() - enemyHealthBefore,
+                                       enemy.isDefeated()));
         return true;
     }
 
@@ -157,12 +172,18 @@ public class TurnManager
         // 4) Inimigo escolhe um ataque e usa
         Attack attack = enemy.chooseAttack();
         int studentHealthBefore = student.getHealth();
+        int studentEnergyBefore = student.getEnergy();
         int damage = enemy.useAttack(attack, student);
         damageTaken = damageTaken + (studentHealthBefore - student.getHealth());
 
+        recordEvent(BattleEvent.subject(attack.getName(), damage,
+                                        student.getHealth() - studentHealthBefore,
+                                        student.getEnergy() - studentEnergyBefore,
+                                        student.isDefeated()));
+
         // Duas linhas: o que aconteceu + a descrição do ataque
-        message = enemy.getName() + " usou " + attack.getName() + "! (-" + damage + " de vida)\n"
-                  + "\"" + attack.getDescription() + "\"";
+        message = enemy.getName() + " utilizou " + attack.getName() + "! Você sofreu "
+                  + damage + " de dano.\n\"" + attack.getDescription() + "\"";
 
         // 5) Verifica se o jogador foi derrotado
         if (student.isDefeated())
@@ -176,7 +197,25 @@ public class TurnManager
         }
     }
 
+    private void recordEvent(BattleEvent event)
+    {
+        lastEvent = event;
+        eventCount++;
+    }
+
     // ----- Consultas -----
+
+    /** Última ação registrada (null antes da primeira ação). */
+    public BattleEvent getLastEvent()
+    {
+        return lastEvent;
+    }
+
+    /** Quantas ações já aconteceram (a interface compara para saber se há evento novo). */
+    public int getEventCount()
+    {
+        return eventCount;
+    }
 
     public BattleState getState()
     {

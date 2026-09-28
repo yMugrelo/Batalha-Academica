@@ -16,4 +16,7 @@ comment4.text=\r\n\ Sombra\ oval\ para\ colocar\ embaixo\ dos\ personagens.\r\n
 comment5.params=sprite\ gap
 comment5.target=greenfoot.GreenfootImage\ withShadow(greenfoot.GreenfootImage,\ int)
 comment5.text=\r\n\ Junta\ uma\ imagem\ de\ personagem\ com\ uma\ sombra\ embaixo\ dela.\r\n\ gap\ \=\ espa\u00E7o\ entre\ os\ p\u00E9s\ e\ a\ sombra\ (personagens\ que\ flutuam).\r\n
-numComments=6
+comment6.params=sprite\ gap\ shadowWidth
+comment6.target=greenfoot.GreenfootImage\ withShadow(greenfoot.GreenfootImage,\ int,\ int)
+comment6.text=\r\n\ Igual\ ao\ anterior,\ escolhendo\ a\ largura\ da\ sombra\ (para\ que\ poses\r\n\ de\ larguras\ diferentes\ tenham\ a\ mesma\ sombra).\r\n
+numComments=7

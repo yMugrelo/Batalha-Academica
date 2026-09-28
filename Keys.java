@@ -17,6 +17,11 @@ public class Keys
         return key.equals("escape");
     }
 
+    public static boolean isMute(String key)
+    {
+        return key.equals("m");
+    }
+
     public static boolean isUp(String key)
     {
         return key.equals("up") || key.equals("w");

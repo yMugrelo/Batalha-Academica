@@ -5,14 +5,17 @@ import greenfoot.*;
  */
 public class ResultWorld extends BaseWorld
 {
+    private static final int CONFETTI_INTERVAL = 25;   // frames entre levas de confete
+
     private BattleSummary summary;
     private MenuUI menu;
+    private int frame;
 
     public ResultWorld(BattleSummary summary)
     {
         super();
         this.summary = summary;
-        setBackground(UiArt.dimmed(ImageLibrary.arena(summary.getSubjectType(), WIDTH, HEIGHT), 140));
+        setBackground(BackgroundManager.result(summary.getSubjectType()));
 
         if (summary.isVictory())
         {
@@ -24,6 +27,22 @@ public class ResultWorld extends BaseWorld
         }
 
         addObject(menu, 400, 520);
+
+        // Textos e menu sempre por cima dos efeitos (confete)
+        setLayers(MenuUI.class, InfoPanel.class, Decoration.class, EffectSprite.class);
+        frame = 0;
+    }
+
+    /**
+     * Na vitória, cai um pouco de confete de tempos em tempos.
+     */
+    protected void update()
+    {
+        frame++;
+        if (summary.isVictory() && frame % CONFETTI_INTERVAL == 0)
+        {
+            Effects.confetti(this, 6);
+        }
     }
 
     private void buildVictory()
@@ -32,7 +51,11 @@ public class ResultWorld extends BaseWorld
         addObject(new Decoration(TextUtil.shadowText(
             "Você foi aprovado em " + summary.getSubjectName() + "!", 24, Palette.TEXT)), 400, 110);
 
-        addObject(new PlayerSprite(), 170, 300);
+        PlayerSprite player = new PlayerSprite();
+        addObject(player, 170, 300);
+        player.playCelebrate();
+        Effects.victory(this, 170, 270);
+
         addObject(new InfoPanel("RESUMO DA BATALHA", new String[] {
             "Turnos: " + summary.getTurns(),
             "Dano causado: " + summary.getDamageDealt(),
@@ -51,8 +74,10 @@ public class ResultWorld extends BaseWorld
             summary.getSubjectName() + " venceu desta vez. Estude e tente de novo!", 22, Palette.TEXT)),
             400, 110);
 
-        addObject(new PlayerSprite(), 220, 300);
-        addObject(new BossSprite(summary.getSubjectType()), 580, 280);
+        PlayerSprite player = new PlayerSprite();
+        addObject(player, 220, 300);
+        player.playDefeat();                                        // o aluno cai
+        addObject(new BossSprite(summary.getSubjectType()), 580, 280);   // a matéria flutua, vitoriosa
 
         menu = new MenuUI(new String[] { "TENTAR NOVAMENTE", "MENU PRINCIPAL" }, 320, 44);
     }
@@ -69,22 +94,36 @@ public class ResultWorld extends BaseWorld
         }
         else if (Keys.isBack(key))
         {
-            GameManager.goToMenu();
+            GameManager.goToMenu(this);
         }
         else if (Keys.isConfirm(key))
         {
-            if (menu.getSelected() == 1)
-            {
-                GameManager.goToMenu();
-            }
-            else if (summary.isVictory())
-            {
-                GameManager.goToSelection();          // escolher outra matéria
-            }
-            else
-            {
-                GameManager.startBattle(summary.getSubjectType());   // revanche
-            }
+            choose(menu.getSelected());
+        }
+    }
+
+    protected void handleMouse()
+    {
+        int clicked = menu.getClickedIndex();
+        if (clicked >= 0)
+        {
+            choose(clicked);
+        }
+    }
+
+    private void choose(int option)
+    {
+        if (option == 1)
+        {
+            GameManager.goToMenu(this);
+        }
+        else if (summary.isVictory())
+        {
+            GameManager.goToSelection(this);                              // escolher outra matéria
+        }
+        else
+        {
+            GameManager.startBattle(this, summary.getSubjectType());      // revanche
         }
     }
 }

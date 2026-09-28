@@ -9,6 +9,9 @@ public class SubjectCard extends Actor
     public static final int WIDTH = 180;
     public static final int HEIGHT = 330;
 
+    /** Onde fica o centro do ícone, em relação ao centro do card. */
+    public static final int ICON_OFFSET_Y = 34 + 52 - HEIGHT / 2;
+
     private SubjectType type;
     private int number;         // 1 a 4 (tecla de atalho)
     private boolean selected;
@@ -44,11 +47,10 @@ public class SubjectCard extends Actor
         img.drawImage(TextUtil.text("[" + number + "]", 18,
                       selected ? Palette.HIGHLIGHT : Palette.TEXT_DIM), 12, 10);
 
-        // Ícone sobre um fundo com a cor da matéria
+        // Fundo do ícone com a cor da matéria (o ícone em si é um ator
+        // separado, que flutua por cima: ver SelectWorld)
         img.setColor(Palette.darker(main, 90));
         img.fillRect(30, 34, WIDTH - 60, 104);
-        GreenfootImage icon = ImageLibrary.subjectIcon(type);
-        TextUtil.drawCentered(img, icon, 34 + (104 - icon.getHeight()) / 2);
 
         // Nome (pode ocupar 2 linhas)
         GreenfootImage name = TextUtil.text(TextUtil.wrap(info.getName(), 13), 22,
