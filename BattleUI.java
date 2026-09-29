@@ -191,7 +191,7 @@ public class BattleUI
                 bossSprite.playDefeat();
                 playerSprite.playCelebrate();
                 SoundManager.stopMusic();
-                SoundManager.playEffect("victory");
+                SoundManager.playEffect("enemyDeath");   // a vinheta de vitória toca no ResultWorld
                 Effects.victory(world, PLAYER_X, PLAYER_Y - 30);
             }
         }
@@ -221,7 +221,7 @@ public class BattleUI
                 playerSprite.playDefeat();
                 Effects.defeat(world);
                 SoundManager.stopMusic();
-                SoundManager.playEffect("defeat");
+                SoundManager.playEffect("studentDeath");   // a vinheta de derrota toca no ResultWorld
             }
         }
     }

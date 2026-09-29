@@ -20,10 +20,12 @@ public class ResultWorld extends BaseWorld
         if (summary.isVictory())
         {
             buildVictory();
+            SoundManager.playEffect("victory");
         }
         else
         {
             buildDefeat();
+            SoundManager.playEffect("defeat");
         }
 
         addObject(menu, 400, 520);

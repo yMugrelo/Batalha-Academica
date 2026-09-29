@@ -5,25 +5,33 @@ import java.util.HashMap;
  * SoundManager - o ÚNICO lugar do jogo que toca sons.
  *
  * Regras de segurança (para o jogo NUNCA depender de áudio):
- *   - só toca arquivos que estão na lista AVAILABLE (sons/ ausentes = silêncio)
+ *   - só toca arquivos registrados em FILES (nome sem arquivo = silêncio)
  *   - se um som der erro ao carregar, o áudio é desligado e o jogo segue
  *   - a música só começa depois da primeira tecla ou clique do jogador:
  *     navegadores bloqueiam áudio antes de uma interação (HTML5)
  *   - tecla M liga/desliga o som a qualquer momento
  *
- * QUANDO ADICIONAR UM SOM: coloque o .wav em sounds/ e acrescente
- * o nome em AVAILABLE (ex.: "menu.wav").
+ * O jogo pede sons por um NOME LÓGICO ("battle", "attack"...) e a tabela
+ * FILES diz qual arquivo de sounds/ toca para cada nome.
+ *
+ * QUANDO ADICIONAR UM SOM: coloque o arquivo (.wav ou .mp3) em sounds/ e
+ * acrescente o par { "nome", "Arquivo.mp3" } em FILES.
  */
 public class SoundManager
 {
-    /** Sons que realmente existem dentro de sounds/. */
-    private static final String[] AVAILABLE = {
-        // Exemplo: "menu.wav",
+    /** Nome lógico -> arquivo que realmente existe dentro de sounds/. */
+    private static final String[][] FILES = {
+        { "battle",       "MusicaBatalha.mp3" },   // música em loop da batalha
+        { "attack",       "Hit.mp3" },             // cada golpe
+        { "enemyDeath",   "MorteInimigo.mp3" },    // golpe final na matéria
+        { "studentDeath", "MorteAluno.mp3" },      // golpe final no aluno
+        { "victory",      "Vitoria.mp3" },         // tela de vitória
+        { "defeat",       "Derrota.mp3" },         // tela de derrota
     };
 
-    /** Todos os sons que o jogo sabe usar (para o relatório de ausentes). */
+    /** Todos os nomes que o jogo sabe usar (para o relatório de ausentes). */
     private static final String[] EXPECTED = {
-        "menu.wav", "battle.wav", "attack.wav", "victory.wav", "defeat.wav"
+        "menu", "battle", "attack", "enemyDeath", "studentDeath", "victory", "defeat"
     };
 
     private static final int MUSIC_VOLUME = 55;
@@ -42,10 +50,12 @@ public class SoundManager
 
     /**
      * Pede uma música em loop ("menu" ou "battle").
+     * "menu" ainda não tem arquivo: os menus ficam em silêncio.
      * Se já estiver tocando, continua de onde está (não reinicia).
      */
     public static void playMusic(String name)
     {
+        stopEffects();   // a vinheta da tela anterior não invade a próxima
         wantedMusic = name;
         startWantedMusic();
     }
@@ -60,12 +70,12 @@ public class SoundManager
     // ===================== Efeitos =====================
 
     /**
-     * Toca um efeito curto ("attack", "victory", "defeat").
+     * Toca um efeito curto ("attack", "enemyDeath", "victory"...).
      */
     public static void playEffect(String name)
     {
-        String file = name + ".wav";
-        if (!canPlay() || !isAvailable(file))
+        String file = fileFor(name);
+        if (!canPlay() || file == null)
         {
             return;
         }
@@ -78,11 +88,21 @@ public class SoundManager
                 sound.setVolume(EFFECT_VOLUME);
                 effects.put(file, sound);
             }
+            sound.stop();   // recomeça do início se ainda estiver tocando
             sound.play();
         }
         catch (RuntimeException e)
         {
             disabled = true;   // áudio com problema: seguimos em silêncio
+        }
+    }
+
+    /** Para todos os efeitos que ainda estão tocando. */
+    public static void stopEffects()
+    {
+        for (GreenfootSound sound : effects.values())
+        {
+            sound.stop();
         }
     }
 
@@ -144,11 +164,11 @@ public class SoundManager
      */
     public static void printMissingSounds()
     {
-        for (String file : EXPECTED)
+        for (String name : EXPECTED)
         {
-            if (!isAvailable(file))
+            if (fileFor(name) == null)
             {
-                System.out.println("Asset ausente: sounds/" + file);
+                System.out.println("Som ausente: \"" + name + "\"");
             }
         }
     }
@@ -160,16 +180,17 @@ public class SoundManager
         return userInteracted && !muted && !disabled;
     }
 
-    private static boolean isAvailable(String file)
+    /** Arquivo registrado para o nome lógico, ou null se não houver. */
+    private static String fileFor(String name)
     {
-        for (String available : AVAILABLE)
+        for (String[] entry : FILES)
         {
-            if (available.equals(file))
+            if (entry[0].equals(name))
             {
-                return true;
+                return entry[1];
             }
         }
-        return false;
+        return null;
     }
 
     private static void startWantedMusic()
@@ -184,8 +205,8 @@ public class SoundManager
         }
 
         stopCurrentMusic();
-        String file = wantedMusic + ".wav";
-        if (!isAvailable(file))
+        String file = fileFor(wantedMusic);
+        if (file == null)
         {
             return;
         }

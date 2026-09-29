@@ -124,7 +124,7 @@ Batalha-Academica/
 │   ├── SoundManager.java  Palette.java  UiArt.java  TextUtil.java  Keys.java
 │
 ├── images/    PNGs do jogo (ainda vazia — ver "Assets")
-└── sounds/    WAVs do jogo (ainda vazia — ver "Assets")
+└── sounds/    MP3s do jogo (música de batalha e efeitos — ver "Assets")
 ```
 
 ---
@@ -311,8 +311,9 @@ Assim a interface sabe qual animação tocar sem que a lógica precise conhecer 
 
 ## Assets: imagens e sons
 
-**Situação atual:** as pastas `images/` e `sounds/` estão vazias. Todo o visual é a **arte provisória** do
-`PlaceholderArt`, e o jogo roda em silêncio. Nada quebra por falta de arquivos.
+**Situação atual:** a pasta `images/` está vazia — todo o visual é a **arte provisória** do `PlaceholderArt`.
+A pasta `sounds/` já tem a música de batalha e os efeitos (os menus ainda ficam em silêncio).
+Nada quebra por falta de arquivos.
 
 ### Como adicionar um PNG
 
@@ -335,16 +336,20 @@ Assim a interface sabe qual animação tocar sem que a lógica precise conhecer 
 Para pixel art, exporte os PNGs **já no tamanho final** (ampliação "nearest neighbor"). Redimensionar no
 código pode borrar os pixels. Fundos com outro tamanho são ajustados automaticamente, sem deformar.
 
-### Como adicionar um som
+### Sons
 
-Coloque o `.wav` em `sounds/` e registre o nome na lista `AVAILABLE` de `SoundManager.java`.
+O jogo pede cada som por um **nome lógico**; a tabela `FILES` de `SoundManager.java` diz qual arquivo toca.
 
-| Arquivo | Quando toca |
-|---|---|
-| `menu.wav` | Música em loop no menu, seleção, regras e créditos |
-| `battle.wav` | Música em loop na batalha |
-| `attack.wav` | A cada golpe (do aluno e da matéria) |
-| `victory.wav` / `defeat.wav` | Fim da batalha |
+| Nome | Arquivo | Quando toca |
+|---|---|---|
+| `menu` | *(nenhum ainda)* | Música em loop no menu, seleção, regras e créditos |
+| `battle` | `MusicaBatalha.mp3` | Música em loop na batalha |
+| `attack` | `Hit.mp3` | A cada golpe (do aluno e da matéria) |
+| `enemyDeath` | `MorteInimigo.mp3` | Golpe final na matéria |
+| `studentDeath` | `MorteAluno.mp3` | Golpe final no aluno |
+| `victory` / `defeat` | `Vitoria.mp3` / `Derrota.mp3` | Ao abrir a tela de resultado |
+
+Para adicionar um som, coloque o `.wav` ou `.mp3` em `sounds/` e registre o par `{ "nome", "Arquivo.mp3" }` em `FILES`.
 
 Para listar o que falta, clique com o botão direito na classe `ImageLibrary` → `printMissingAssets()`,
 ou em `SoundManager` → `printMissingSounds()`.
@@ -381,11 +386,11 @@ antes de usar o teclado.
 - [x] HUD com barras animadas, caixa de mensagens, menu de ações
 - [x] Animações de ataque, dano, derrota e comemoração; efeitos de impacto, crítico, vitória e derrota
 - [x] Transições entre telas, teclado e mouse
-- [x] Sistema de som (aguardando os arquivos)
+- [x] Sistema de som com música de batalha e efeitos (falta a música do menu)
 
 **Próximos passos:**
 
-- [ ] Arte definitiva (PNGs) e sons (WAVs)
+- [ ] Arte definitiva (PNGs) e música do menu
 - [ ] Publicar no greenfoot.org e testar no navegador
 - [ ] Revisar o equilíbrio (hoje o jogo tende a ser fácil; descansar sempre empata com Estrutura de Dados)
 - [ ] Ideias: modo "semestre" (as 4 matérias em sequência), boss final (Prova Final), XP
